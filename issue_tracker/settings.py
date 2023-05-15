@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     # EXCEPTION HANDLER MIDDLEWARE
-    'issue_tracker.middleware.ExceptionHandleMiddleware'
+    'issue_tracker.middleware.ErrorNotificationMiddleware'
 ]
 
 ROOT_URLCONF = 'issue_tracker.urls'

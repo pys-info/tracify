@@ -7,10 +7,10 @@ from .channels.backends.discord_backend import Channel
 from .channels.channels_factory import channel_transformer
 
 
-class ExceptionHandleMiddleware:
+class ErrorNotificationMiddleware:
     def __init__(self, get_response=None):
         """
-        Initializes a new instance of the ExceptionHandleMiddleware class.
+        Initializes a new instance of the ErrorNotificationMiddleware class.
 
         Args:
             get_response: The next middleware in the chain. Optional.
