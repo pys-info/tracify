@@ -1,7 +1,7 @@
-from .discord_backend import IssueTrackerChannel
+from .discord_backend import Channel
 
 
-class TeamsChannel(IssueTrackerChannel):
+class TeamsChannel(Channel):
     """
     Sends notifications to a Microsoft Teams channel.
     """

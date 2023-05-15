@@ -3,7 +3,7 @@ import traceback
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
-from .channels.backends.discord_backend import IssueTrackerChannel
+from .channels.backends.discord_backend import Channel
 from .channels.channels_factory import channel_transformer
 
 
@@ -30,13 +30,13 @@ class ExceptionHandleMiddleware:
         """
         return self.get_response(request)
 
-    def add_channel(self, name: str, channel: IssueTrackerChannel):
+    def add_channel(self, name: str, channel: Channel):
         """
         Adds an issue tracker channel to the list of channels used by the middleware.
 
         Args:
             name: The name of the issue tracker channel.
-            channel: The IssueTrackerChannel instance to add.
+            channel: The Channel instance to add.
         """
         self.channels[name] = channel
 

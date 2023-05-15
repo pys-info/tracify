@@ -4,13 +4,13 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 from django.core.exceptions import ImproperlyConfigured
 
 
-class IssueTrackerChannel:
+class Channel:
     """
     Base class for issue tracker channels.
     """
     def __init__(self, name: str):
         """
-        Initializes an IssueTrackerChannel object.
+        Initializes Channel object.
 
         Args:
             name (str): The name of the issue tracker channel.
@@ -27,7 +27,7 @@ class IssueTrackerChannel:
         raise NotImplementedError("send_notification method not implemented in the base class")
 
 
-class DiscordChannel(IssueTrackerChannel):
+class DiscordChannel(Channel):
     """
     Sends notifications to a Discord channel.
     """
