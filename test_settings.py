@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'issue_tracker'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ MIDDLEWARE = [
     'issue_tracker.middleware.ErrorNotificationMiddleware'
 ]
 
-ROOT_URLCONF = 'issue_tracker.urls'
+ROOT_URLCONF = 'test_urls'
 
 TEMPLATES = [
     {
@@ -72,8 +73,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'issue_tracker.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -124,15 +123,33 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
+#     'DISCORD':
+#         {
+#             # Configuration for sending notifications to a Discord channel
+#             'WEBHOOK_URL': os.environ.get('WEBHOOK_URL')
+#         },
+#     'TEAMS':
+#         {
+#             # Configuration for sending notifications to a Microsoft Teams channel
+#             # The required configuration options will be specified here.
+#         },
+# }
+
 ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
-    'DISCORD':
-        {
+    "DISCORD": {
+        "class": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
+        "credentials": {
             # Configuration for sending notifications to a Discord channel
-            'WEBHOOK_URL': os.environ.get('WEBHOOK_URL')
-        },
-    'TEAMS':
-        {
+            "WEBHOOK_URL": os.environ.get('WEBHOOK_URL'),
+            # Other Discord-specific credentials
+        }
+    },
+    "TEAMS": {
+        "class": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
+        "credentials": {
             # Configuration for sending notifications to a Microsoft Teams channel
             # The required configuration options will be specified here.
-        },
+        }
+    },
 }

@@ -1,10 +1,11 @@
-from .discord_backend import Channel
+from issue_tracker.channels.channel import Channel
 
 
 class TeamsChannel(Channel):
     """
     Sends notifications to a Microsoft Teams channel.
     """
+
     def send_notification(self, **kwargs):
         """Send a notification to Microsoft Teams.
 
