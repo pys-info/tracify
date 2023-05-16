@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'issue_tracker'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ MIDDLEWARE = [
     'issue_tracker.middleware.ErrorNotificationMiddleware'
 ]
 
-ROOT_URLCONF = 'issue_tracker.urls'
+ROOT_URLCONF = 'test_urls'
 
 TEMPLATES = [
     {
@@ -72,8 +73,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'issue_tracker.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

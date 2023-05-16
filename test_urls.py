@@ -14,9 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
+from test_views import test_error_notifire
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('test_error_notifire/', test_error_notifire, name="test_error_notifire"),
 ]
