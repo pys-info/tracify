@@ -1,6 +1,6 @@
 import sys
 import traceback
-from django.conf import settings
+from issue_tracker import app_settings
 from django.core.exceptions import ImproperlyConfigured
 
 from .channels.backends.discord_backend import Channel
@@ -55,16 +55,16 @@ class ErrorNotificationMiddleware:
         kind, info, data = sys.exc_info()
         data = "\n".join(traceback.format_exception(kind, info, data))
 
-        if not settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION:
+        if not app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION:
             raise ImproperlyConfigured("issue tracker channels configuration missing")
 
-        for channel_name in settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION:
+        for channel_name in app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION:
             channel = self.channels.get(channel_name)
             if not channel:
                 # Create the channel object if not already created
                 channel = channel_transformer.get_channel(name=channel_name)
                 self.add_channel(channel_name, channel)
             channel.send_notification(
-                configuration=settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[channel_name], request=request,
+                configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[channel_name], request=request,
                 data=data, exception_type=exception_type
             )
