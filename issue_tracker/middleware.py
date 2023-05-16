@@ -65,6 +65,7 @@ class ErrorNotificationMiddleware:
                 channel = channel_transformer.get_channel(name=channel_name)
                 self.add_channel(channel_name, channel)
             channel.send_notification(
-                configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[channel_name], request=request,
+                configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[channel_name]["credentials"],
+                request=request,
                 data=data, exception_type=exception_type
             )

@@ -123,15 +123,33 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
+#     'DISCORD':
+#         {
+#             # Configuration for sending notifications to a Discord channel
+#             'WEBHOOK_URL': os.environ.get('WEBHOOK_URL')
+#         },
+#     'TEAMS':
+#         {
+#             # Configuration for sending notifications to a Microsoft Teams channel
+#             # The required configuration options will be specified here.
+#         },
+# }
+
 ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
-    'DISCORD':
-        {
+    "DISCORD": {
+        "class": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
+        "credentials": {
             # Configuration for sending notifications to a Discord channel
-            'WEBHOOK_URL': os.environ.get('WEBHOOK_URL')
-        },
-    'TEAMS':
-        {
+            "WEBHOOK_URL": os.environ.get('WEBHOOK_URL'),
+            # Other Discord-specific credentials
+        }
+    },
+    "TEAMS": {
+        "class": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
+        "credentials": {
             # Configuration for sending notifications to a Microsoft Teams channel
             # The required configuration options will be specified here.
-        },
+        }
+    },
 }
