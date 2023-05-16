@@ -3,7 +3,7 @@
 ## General
 
  - [ ] Make sure you use [semantic commit messages](https://dev.to/hornet_daemon/git-commit-patterns-5dm7).
-       Examples: `"fix(google): Fixed foobar bug"`, `"feat(accounts): Added foobar feature"`.
+       Examples: `"fix(discord): Fixed discord webhook configuration bug"`, `"feat(Microsoft teams): Added ms temas channelfeature"`.
  - [ ] All Python code must formatted using Black, and clean from pep8 and isort issues.
  - [ ] If your changes are significant, please update `ChangeLog.rst`.
 
