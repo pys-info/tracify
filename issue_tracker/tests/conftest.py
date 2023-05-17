@@ -1,5 +1,7 @@
 import pytest
 
+from issue_tracker.middleware import ErrorNotificationMiddleware
+
 
 @pytest.fixture
 def issue_tracker_channels_configuration():
@@ -22,3 +24,9 @@ def issue_tracker_channels_configuration():
         },
     }
     return configuration
+
+
+@pytest.fixture
+def error_notification_middleware():
+    # Instance of ErrorNotificationMiddleware for testing
+    return ErrorNotificationMiddleware()
