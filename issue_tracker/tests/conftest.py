@@ -1,6 +1,7 @@
 import pytest
 
 from issue_tracker.channels.backends.discord_backend import DiscordChannel
+from issue_tracker.channels.channels_factory import ChannelTransformer
 from issue_tracker.middleware import ErrorNotificationMiddleware
 
 
@@ -36,3 +37,8 @@ def error_notification_middleware():
 @pytest.fixture
 def discord_channel():
     return DiscordChannel(name="dummy_channel")
+
+
+@pytest.fixture
+def channel_transformer():
+    return ChannelTransformer()
