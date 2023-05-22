@@ -32,7 +32,7 @@ class DiscordChannel(Channel):
         )
         data = f"```{kwargs.get('data')}```"
         embed = DiscordEmbed(title=kwargs.get("exception_type"), description=data, color="03b2f8")
-        embed.add_embed_field(name="User", value=kwargs.get("request").user.username, inline=True)
+        # embed.add_embed_field(name="User", value=kwargs.get("request").user.username, inline=True)
         embed.add_embed_field(name="Method", value=kwargs.get("request").method, inline=True)
         embed.add_embed_field(name="GET", value=json.dumps(kwargs.get("request").GET), inline=False)
         embed.add_embed_field(name="POST", value=json.dumps(kwargs.get("request").POST), inline=False)
