@@ -1,5 +1,3 @@
-import requests
-
 from issue_tracker.channels.channel import Channel
 from issue_tracker.models import Issue
 import logging
