@@ -140,4 +140,10 @@ ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
             # The required configuration options will be specified here.
         }
     },
+    "DB": {
+        "class": "issue_tracker.channels.backends.db_backend.DBChannel",
+        "credentials": {
+
+        }
+    }
 }

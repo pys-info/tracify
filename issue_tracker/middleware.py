@@ -51,6 +51,7 @@ class ErrorNotificationMiddleware:
         Raises:
             ImproperlyConfigured: If the issue tracker channels configuration is missing.
         """
+        exception_args = exception.args[0] if len(exception.args) > 0 else ""
         exception_type = exception.__class__.__name__
         kind, info, data = sys.exc_info()
         data = "\n".join(traceback.format_exception(kind, info, data))
@@ -66,6 +67,6 @@ class ErrorNotificationMiddleware:
                 self.add_channel(channel_name, channel)
             channel.send_notification(
                 configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[channel_name]["credentials"],
-                request=request,
+                request=request, exception_args=exception_args,
                 data=data, exception_type=exception_type
             )
