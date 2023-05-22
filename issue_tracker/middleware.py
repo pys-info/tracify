@@ -3,7 +3,7 @@ import traceback
 from issue_tracker import app_settings
 from django.core.exceptions import ImproperlyConfigured
 
-from .channels.backends.discord_backend import Channel
+from .channels.channel import Channel
 from .channels.channels_factory import channel_transformer
 
 
