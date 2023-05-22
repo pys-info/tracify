@@ -136,6 +136,7 @@ ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
         "class": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
         "credentials": {
             # Configuration for sending notifications to a Microsoft Teams channel
+            "WEBHOOK_URL": os.environ.get("TEAMS_WEBHOOK_URL"),
             # The required configuration options will be specified here.
         }
     },
