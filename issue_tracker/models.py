@@ -14,8 +14,6 @@ class Issue(models.Model):
     response = models.TextField(help_text="Error log")
     description = models.TextField(help_text="Reason of error")
     status_code = models.CharField(max_length=10, blank=True, null=True)
-    user = models.ForeignKey(User, null=True, on_delete=models.DO_NOTHING)
-    content_type = models.CharField(max_length=50)
     created_time = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

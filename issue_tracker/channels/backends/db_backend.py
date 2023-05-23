@@ -36,8 +36,6 @@ class DBChannel(Channel):
         try:
             request = kwargs.get("request")
             Issue.objects.create(
-                content_type=request.content_type,
-                user=request.user if request.user.is_authenticated else None,
                 status_code="",
                 description=kwargs.get("exception_args"),
                 response=f"```{kwargs.get('data')}```",
