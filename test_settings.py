@@ -140,4 +140,10 @@ ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
             # The required configuration options will be specified here.
         }
     },
+    "EMAIL":{
+        "class":"issue_tracker.channels.backends.email_backend.EmailChannel",
+        "credentials":{
+            # Configuration for sending notification to a email channel
+        }
+    }
 }
