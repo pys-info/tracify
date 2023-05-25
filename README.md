@@ -23,18 +23,12 @@ Get instant notifications and detailed stack traces for errors occurring in your
  - We are grateful to everyone who has played a part in making this package what it is today, and we look forward to continued collaboration and improvement in the future.
 
 ## Configuration
-- `docs/configuration.rst`
-   <p>The package can be configured using configuration file or enviroment variable.Refer to the configuration documentation for details information on available setting and customization options.
-- `docs/faq.rst`
-   <p>Troubleshooting and Support If you encounter any issues or have questions, please visit our support page or check out the FAQs for common troubleshooting steps and answers to frequently asked questions
-- `ChangLog.rst`
-   <p>Changelog to see the full history of changes made to the package.please refer to the changlog.
-- `License`
-   <p>This packages is licenced under the MIT Licence.
-- `docs/channels.rst`
-   <p>Refer to the Channels documentation for details information on available channels.
-- `docs/release-notes.rst`
-   <p>Release version related information you can get inside the release-notes documents.
+-  The package can be configured using configuration file or enviroment variable.Refer to the configuration documentation for details information on available setting and customization options.See details information inside `docs/configuration.rst`.
+-  Troubleshooting and Support If you encounter any issues or have questions, please visit our support page or check out the FAQs for common troubleshooting steps and answers to frequently asked questions. See details information inside `docs/faq.rst`.
+-  Changelog to see the full history of changes made to the package.please refer to the changlog.See details information inside `ChangLog.rst`.
+-  This packages is licenced under the MIT Licence.See details information inside`License`.
+-  Refer to the Channels documentation for details information on available channels.See details information inside `docs/channels.rst`
+-  Release version related information you can get inside the release-notes documents.See details information inside `docs/release-notes.rst`
 
 ## License
 *MIT License:* <https://choosealicense.com/licenses/mit/>
