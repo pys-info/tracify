@@ -2,6 +2,7 @@ class Channel:
     """
     Base class for issue tracker channels.
     """
+
     def __init__(self, name: str):
         """
         Initializes Channel object.
@@ -18,4 +19,6 @@ class Channel:
         Raises:
             NotImplementedError: If the send_notification method is not implemented in a subclass.
         """
-        raise NotImplementedError("send_notification method not implemented in the base class")
+        raise NotImplementedError(
+            "send_notification method not implemented in the base class"
+        )

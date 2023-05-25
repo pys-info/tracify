@@ -2,7 +2,6 @@ import pytest
 
 
 class TestChannelTransformer:
-
     def test_get_channel_invalid_name(self, channel_transformer):
         # Mock the channel instance
         # Mock the channels dictionary
