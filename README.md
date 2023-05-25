@@ -13,6 +13,16 @@ Django Issue Tracker supports multiple channels for sending notifications, such 
 * **Real-Time Error Monitoring:**
 Get instant notifications and detailed stack traces for errors occurring in your application, allowing you to respond quickly.
 
+## Requirements
+- Python 3.5, 3.6, 3.7, 3.8, 3.9, or 3.10
+- Django (3.0+)
+## Supported Channels
+- Discord
+- MS Teams
+- Email
+- Database
+- Slack
+
 ## Installation 
 
 **Python package:**
