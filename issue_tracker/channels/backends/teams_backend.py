@@ -48,7 +48,7 @@ class TeamsChannel(Channel):
             "GET": json.dumps(request.GET) if request.GET else "DATA not found.",
             "POST": json.dumps(request.POST) if request.POST else "DATA not found.",
             "FILES": json.dumps(request.FILES) if request.FILES else "DATA not found.",
-            "TIMESTAMP": str(datetime.datetime.now())
+            "TIMESTAMP": str(datetime.datetime.now()),
         }
         for key, value in facts.items():
             Section2.addFact(key, value)

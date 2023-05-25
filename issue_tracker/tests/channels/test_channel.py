@@ -4,7 +4,6 @@ from issue_tracker.channels.channel import Channel
 
 
 class TestChannel:
-
     def test_channel_name(self):
         # Create a test channel
         channel_name = "test_channel"
@@ -22,4 +21,7 @@ class TestChannel:
         with pytest.raises(NotImplementedError) as excinfo:
             channel.send_notification()
         # Assert that the exception was raised with the expected message
-        assert str(excinfo.value) == "send_notification method not implemented in the base class"
+        assert (
+            str(excinfo.value)
+            == "send_notification method not implemented in the base class"
+        )
