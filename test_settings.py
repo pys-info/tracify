@@ -145,6 +145,12 @@ ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
         "credentials": {
             # Configuration for sending notification to a email channel
         }
+    },
+    "DB": {
+        "class": "issue_tracker.channels.backends.db_backend.DBChannel",
+        "credentials": {
+
+        }
     }
 }
 

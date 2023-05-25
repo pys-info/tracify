@@ -1,9 +1,7 @@
 import sys
 import traceback
-
-from django.core.exceptions import ImproperlyConfigured
-
 from issue_tracker import app_settings
+from django.core.exceptions import ImproperlyConfigured
 
 from .channels.channel import Channel
 from .channels.channels_factory import channel_transformer
@@ -53,6 +51,7 @@ class ErrorNotificationMiddleware:
         Raises:
             ImproperlyConfigured: If the issue tracker channels configuration is missing.
         """
+        exception_args = exception.args[0] if len(exception.args) > 0 else ""
         exception_type = exception.__class__.__name__
         kind, info, data = sys.exc_info()
         data = "\n".join(traceback.format_exception(kind, info, data))
@@ -67,10 +66,7 @@ class ErrorNotificationMiddleware:
                 channel = channel_transformer.get_channel(name=channel_name)
                 self.add_channel(channel_name, channel)
             channel.send_notification(
-                configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[
-                    channel_name
-                ]["credentials"],
-                request=request,
-                data=data,
-                exception_type=exception_type,
+                configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[channel_name]["credentials"],
+                request=request, exception_args=exception_args,
+                data=data, exception_type=exception_type
             )
