@@ -1,9 +1,6 @@
 Installation
 ============
 
-Django
-------
-
 Python package::
 
     pip install django-issue-tracker
@@ -28,6 +25,7 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
             # The required configuration options will be specified here.
         }
     },
+    ...
 }
 
     INSTALLED_APPS = [
