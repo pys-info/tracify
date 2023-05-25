@@ -1,9 +1,11 @@
 import sys
 import traceback
-from issue_tracker import app_settings
+
 from django.core.exceptions import ImproperlyConfigured
 
-from .channels.backends.discord_backend import Channel
+from issue_tracker import app_settings
+
+from .channels.channel import Channel
 from .channels.channels_factory import channel_transformer
 
 
@@ -65,7 +67,10 @@ class ErrorNotificationMiddleware:
                 channel = channel_transformer.get_channel(name=channel_name)
                 self.add_channel(channel_name, channel)
             channel.send_notification(
-                configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[channel_name]["credentials"],
+                configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[
+                    channel_name
+                ]["credentials"],
                 request=request,
-                data=data, exception_type=exception_type
+                data=data,
+                exception_type=exception_type,
             )
