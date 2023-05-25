@@ -1,8 +1,10 @@
-import pytest
 from unittest import mock
+
+import pytest
 from django.core.exceptions import ImproperlyConfigured
-from issue_tracker.channels.backends.discord_backend import DiscordChannel
 from django.http import HttpRequest
+
+from issue_tracker.channels.backends.discord_backend import DiscordChannel
 
 
 class TestDiscordChannel:
@@ -49,13 +51,18 @@ class TestDiscordChannel:
             "exception_type": "Sample exception",
         }
         # Mock the build_absolute_uri method of the HttpRequest object
-        kwargs["request"].build_absolute_uri = mock.Mock(return_value="http://example.com")
+        kwargs["request"].build_absolute_uri = mock.Mock(
+            return_value="http://example.com"
+        )
 
         # Mock the DiscordWebhook and execute method
         webhook_mock = mock.Mock()
 
         # Patch the DiscordWebhook class and execute method
-        with mock.patch("issue_tracker.channels.backends.discord_backend.DiscordWebhook", return_value=webhook_mock):
+        with mock.patch(
+            "issue_tracker.channels.backends.discord_backend.DiscordWebhook",
+            return_value=webhook_mock,
+        ):
             discord_channel.send_notification(**kwargs)
             webhook_mock.configure_mock()
 
