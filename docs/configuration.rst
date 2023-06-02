@@ -7,34 +7,24 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
 
     ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
     "DISCORD": {
-        "class": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
-        "credentials": {
-            # Configuration for sending notifications to a Discord channel
-            "WEBHOOK_URL": "discord webhook api",
-            # Other Discord-specific credentials
-        }
+        "BACKEND": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
+        "WEBHOOK_URL": os.environ.get("WEBHOOK_URL"),
     },
     "TEAMS": {
-        "class": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
-        "credentials": {
-            # Configuration for sending notifications to a Microsoft Teams channel
-            # The required configuration options will be specified here.
-        }
+        "BACKEND": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
+        "WEBHOOK_URL": os.environ.get("TEAMS_WEBHOOK_URL"),
     },
-     "TEAMS": {
-        "class": "issue_tracker.channels.backends.email_backend.EmailChannel",
-        "credentials": {
-            # Configuration for sending notifications to a email T channel
-            # The required configuration options will be specified here.
-        }
+    "EMAIL": {
+        "BACKEND": "issue_tracker.channels.backends.email_backend.EmailChannel",
     },
-     "TEAMS": {
-        "class": "issue_tracker.channels.backends.db_backend.DBChannel",
-        "credentials": {
-            # Configuration for storing notifications to a database channel
-            # The required configuration options will be specified here.
-        }
+    "DB": {
+        "BACKEND": "issue_tracker.channels.backends.db_backend.DBChannel",
     },
+    "SLACk": {
+        "BACKEND": "issue_tracker.channels.backends.slack_backend.SlackChannel",
+        "WEBHOOK_URL": os.environ.get("SLACK_WEBHOOK_URL"),
+    }
+    ...
 }
 
     INSTALLED_APPS = [
