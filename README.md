@@ -35,7 +35,7 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
 
     ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
     "DISCORD": {
-        "class": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
+        "backend": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
         "credentials": {
             # Configuration for sending notifications to a Discord channel
             "WEBHOOK_URL": "discord webhook api",
@@ -43,7 +43,7 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
         }
     },
     "TEAMS": {
-        "class": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
+        "backend": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
         "credentials": {
             # Configuration for sending notifications to a Microsoft Teams channel
             # The required configuration options will be specified here.

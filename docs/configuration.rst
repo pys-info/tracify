@@ -7,7 +7,7 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
 
     ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
     "DISCORD": {
-        "class": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
+        "backend": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
         "credentials": {
             # Configuration for sending notifications to a Discord channel
             "WEBHOOK_URL": "discord webhook api",
@@ -15,26 +15,24 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
         }
     },
     "TEAMS": {
-        "class": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
+        "backend": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
         "credentials": {
             # Configuration for sending notifications to a Microsoft Teams channel
             # The required configuration options will be specified here.
         }
     },
-     "TEAMS": {
-        "class": "issue_tracker.channels.backends.email_backend.EmailChannel",
+     "EMAIL": {
+        "backend": "issue_tracker.channels.backends.email_backend.EmailChannel",
         "credentials": {
-            # Configuration for sending notifications to a email T channel
-            # The required configuration options will be specified here.
+            # Configuration for sending notification to a email channel
         }
     },
-     "TEAMS": {
-        "class": "issue_tracker.channels.backends.db_backend.DBChannel",
+    "DB": {
+        "backend": "issue_tracker.channels.backends.db_backend.DBChannel",
         "credentials": {
-            # Configuration for storing notifications to a database channel
-            # The required configuration options will be specified here.
+            # Configuration for sending notification to a database channel.
         }
-    },
+    }
 }
 
     INSTALLED_APPS = [

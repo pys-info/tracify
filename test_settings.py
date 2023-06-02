@@ -125,7 +125,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
     "DISCORD": {
-        "class": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
+        "backend": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
         "credentials": {
             # Configuration for sending notifications to a Discord channel
             "WEBHOOK_URL": os.environ.get("WEBHOOK_URL"),
@@ -133,7 +133,7 @@ ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
         },
     },
     "TEAMS": {
-        "class": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
+        "backend": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
         "credentials": {
             # Configuration for sending notifications to a Microsoft Teams channel
             "WEBHOOK_URL": os.environ.get("TEAMS_WEBHOOK_URL"),
@@ -141,15 +141,15 @@ ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
         },
     },
     "EMAIL": {
-        "class": "issue_tracker.channels.backends.email_backend.EmailChannel",
+        "backend": "issue_tracker.channels.backends.email_backend.EmailChannel",
         "credentials": {
             # Configuration for sending notification to a email channel
         }
     },
     "DB": {
-        "class": "issue_tracker.channels.backends.db_backend.DBChannel",
+        "backend": "issue_tracker.channels.backends.db_backend.DBChannel",
         "credentials": {
-
+            # Configuration for sending notification to a database channel.
         }
     }
 }
