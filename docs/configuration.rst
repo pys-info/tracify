@@ -8,11 +8,11 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
     ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
     "DISCORD": {
         "BACKEND": "issue_tracker.channels.backends.discord.DiscordChannel",
-        "WEBHOOK_URL": os.environ.get("WEBHOOK_URL"),
+        "WEBHOOK_URL": <"DISCORD_WEBHOOK_URL">,
     },
     "TEAMS": {
         "BACKEND": "issue_tracker.channels.backends.teams.TeamsChannel",
-        "WEBHOOK_URL": os.environ.get("TEAMS_WEBHOOK_URL"),
+        "WEBHOOK_URL": <"TEAMS_WEBHOOK_URL">,
     },
     "EMAIL": {
         "BACKEND": "issue_tracker.channels.backends.email.EmailChannel",
@@ -22,7 +22,7 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
     },
     "SLACk": {
         "BACKEND": "issue_tracker.channels.backends.slack.SlackChannel",
-        "WEBHOOK_URL": os.environ.get("SLACK_WEBHOOK_URL"),
+        "WEBHOOK_URL": <"SLACK_WEBHOOK_URL">,
     }
     ...
 }
