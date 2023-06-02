@@ -4,7 +4,7 @@ import pytest
 from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpRequest
 
-from issue_tracker.channels.backends.discord_backend import DiscordChannel
+from issue_tracker.channels.backends.discord import DiscordChannel
 
 
 class TestDiscordChannel:

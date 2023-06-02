@@ -35,21 +35,21 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
 
     ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
     "DISCORD": {
-        "BACKEND": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
+        "BACKEND": "issue_tracker.channels.backends.discord.DiscordChannel",
         "WEBHOOK_URL": os.environ.get("WEBHOOK_URL"),
     },
     "TEAMS": {
-        "BACKEND": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
+        "BACKEND": "issue_tracker.channels.backends.teams.TeamsChannel",
         "WEBHOOK_URL": os.environ.get("TEAMS_WEBHOOK_URL"),
     },
     "EMAIL": {
-        "BACKEND": "issue_tracker.channels.backends.email_backend.EmailChannel",
+        "BACKEND": "issue_tracker.channels.backends.email.EmailChannel",
     },
     "DB": {
-        "BACKEND": "issue_tracker.channels.backends.db_backend.DBChannel",
+        "BACKEND": "issue_tracker.channels.backends.db.DBChannel",
     },
     "SLACk": {
-        "BACKEND": "issue_tracker.channels.backends.slack_backend.SlackChannel",
+        "BACKEND": "issue_tracker.channels.backends.slack.SlackChannel",
         "WEBHOOK_URL": os.environ.get("SLACK_WEBHOOK_URL"),
     }
     ...

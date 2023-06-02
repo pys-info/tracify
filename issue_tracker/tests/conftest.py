@@ -1,6 +1,6 @@
 import pytest
 
-from issue_tracker.channels.backends.discord_backend import DiscordChannel
+from issue_tracker.channels.backends.discord import DiscordChannel
 from issue_tracker.channels.channels_factory import ChannelTransformer
 from issue_tracker.middleware import ErrorNotificationMiddleware
 
