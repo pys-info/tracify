@@ -151,6 +151,12 @@ ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
         "credentials": {
 
         }
+    },
+    "SLACk": {
+        "class": "issue_tracker.channels.backends.slack_backend.SlackChannel",
+        "credentials": {
+            "WEBHOOK_URL": os.environ.get("SLACK_WEBHOOK_URL"),
+        }
     }
 }
 
