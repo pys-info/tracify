@@ -47,8 +47,7 @@ class ChannelTransformer:
 
             # Extract channel class and credentials from configuration
             channel_class_path = (
-                channel_config["class"],
-                channel_config["credentials"],
+                channel_config.get("BACKEND"),
             )
 
             # Dynamically import the channel class

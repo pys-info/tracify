@@ -125,38 +125,22 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
     "DISCORD": {
-        "class": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
-        "credentials": {
-            # Configuration for sending notifications to a Discord channel
-            "WEBHOOK_URL": os.environ.get("WEBHOOK_URL"),
-            # Other Discord-specific credentials
-        },
+        "BACKEND": "issue_tracker.channels.backends.discord_backend.DiscordChannel",
+        "WEBHOOK_URL": os.environ.get("WEBHOOK_URL"),
     },
     "TEAMS": {
-        "class": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
-        "credentials": {
-            # Configuration for sending notifications to a Microsoft Teams channel
-            "WEBHOOK_URL": os.environ.get("TEAMS_WEBHOOK_URL"),
-            # The required configuration options will be specified here.
-        },
+        "BACKEND": "issue_tracker.channels.backends.teams_backend.TeamsChannel",
+        "WEBHOOK_URL": os.environ.get("TEAMS_WEBHOOK_URL"),
     },
     "EMAIL": {
-        "class": "issue_tracker.channels.backends.email_backend.EmailChannel",
-        "credentials": {
-            # Configuration for sending notification to a email channel
-        }
+        "BACKEND": "issue_tracker.channels.backends.email_backend.EmailChannel",
     },
     "DB": {
-        "class": "issue_tracker.channels.backends.db_backend.DBChannel",
-        "credentials": {
-
-        }
+        "BACKEND": "issue_tracker.channels.backends.db_backend.DBChannel",
     },
     "SLACk": {
-        "class": "issue_tracker.channels.backends.slack_backend.SlackChannel",
-        "credentials": {
-            "WEBHOOK_URL": os.environ.get("SLACK_WEBHOOK_URL"),
-        }
+        "BACKEND": "issue_tracker.channels.backends.slack_backend.SlackChannel",
+        "WEBHOOK_URL": os.environ.get("SLACK_WEBHOOK_URL"),
     }
 }
 
