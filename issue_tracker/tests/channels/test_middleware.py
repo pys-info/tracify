@@ -66,32 +66,20 @@ class TestErrorNotificationMiddleware:
             issue_tracker_channels_configuration: Fixture providing a valid issue tracker channels configuration.
 
         """
-        # Set up a valid configuration
-        app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
-            "CHANNEL_ONE": {
-                "BACKEND": "fake channel class path",
-                "WEBHOOK_URL": "fake channel one webhook url"
-
-            },
-        }
-
-        # Define a sample request and exception
-        request = mock.Mock()
-        exception = Exception("Sample exception")
-
-        # Mock the channel object
         channel_mock = mock.Mock()
-        error_notification_middleware.add_channel("CHANNEL_ONE", channel_mock)
-
-        # Call the process_exception method
+        channel_mock.send_notification = mock.Mock()
+        error_notification_middleware.add_channel("channel_name", channel_mock)
+        request = mock.Mock()
+        exception = ValueError("Test Exception")
+        app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
+            "channel_name": "configuration_data"
+        }
         error_notification_middleware.process_exception(request, exception)
 
-        # Assert that the send_notification method is called on the channel object
         channel_mock.send_notification.assert_called_once_with(
-            configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[
-                "CHANNEL_ONE"
-            ],
+            configuration="configuration_data",
             request=request,
+            exception_args=exception.args[0],
             data=mock.ANY,
             exception_type=exception.__class__.__name__,
         )

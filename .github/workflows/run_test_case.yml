@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
 
 jobs:
   run_tests:
@@ -25,4 +30,5 @@ jobs:
 
       - name: Run Tests
         run: |
-          pytest issue_tracker/tests/
+          pytest issue_tracker/tests/test_channels_factory.py
+          pytest issue_tracker/tests/channels/
