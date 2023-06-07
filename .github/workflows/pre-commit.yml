@@ -1,0 +1,42 @@
+name: Pre-commit
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+  # Trigger the workflow on any file changes
+  # in the repository
+  workflow_dispatch:
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Determine changed Python files
+        id: find_files
+        run: |
+          echo "::set-output name=python_files::$(git diff --name-only --diff-filter=ACMRTUXB -- '*.py')"
+
+      - name: Run pre-commit on Python files
+        run: |
+          python_files="${{ steps.find_files.outputs.python_files }}"
+          if [[ -n "$python_files" ]]; then
+            pre-commit run --files $python_files
+          else
+            echo "No Python files changed. Skipping pre-commit hooks."
+          fi

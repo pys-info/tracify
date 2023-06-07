@@ -23,15 +23,11 @@ class TestIssueTrackerChannelsConfiguration:
             issue_tracker_channels_configuration
         )
         assert (
-            app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION["CHANNEL_ONE"][
-                "credentials"
-            ]["WEBHOOK_URL"]
+            app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION["CHANNEL_ONE"]["WEBHOOK_URL"]
             == "fake channel one webhook url"
         )
         assert (
-            app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION["CHANNEL_TWO"][
-                "credentials"
-            ]["WEBHOOK_URL"]
+            app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION["CHANNEL_TWO"]["WEBHOOK_URL"]
             == "fake channel two webhook url"
         )
 

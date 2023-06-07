@@ -1,0 +1,28 @@
+name: Run Test Case
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Tests
+        run: |
+          pytest issue_tracker/tests/

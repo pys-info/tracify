@@ -69,11 +69,9 @@ class TestErrorNotificationMiddleware:
         # Set up a valid configuration
         app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
             "CHANNEL_ONE": {
-                "class": "fake channel class path",
-                "credentials": {
-                    "WEBHOOK_URL": "fake channel one webhook url",
-                    # Other Discord-specific credentials
-                },
+                "BACKEND": "fake channel class path",
+                "WEBHOOK_URL": "fake channel one webhook url"
+
             },
         }
 
@@ -92,7 +90,7 @@ class TestErrorNotificationMiddleware:
         channel_mock.send_notification.assert_called_once_with(
             configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[
                 "CHANNEL_ONE"
-            ]["credentials"],
+            ],
             request=request,
             data=mock.ANY,
             exception_type=exception.__class__.__name__,

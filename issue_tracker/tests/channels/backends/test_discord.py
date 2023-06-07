@@ -60,7 +60,7 @@ class TestDiscordChannel:
 
         # Patch the DiscordWebhook class and execute method
         with mock.patch(
-            "issue_tracker.channels.backends.discord_backend.DiscordWebhook",
+            "issue_tracker.channels.backends.discord.DiscordWebhook",
             return_value=webhook_mock,
         ):
             discord_channel.send_notification(**kwargs)
