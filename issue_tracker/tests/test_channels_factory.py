@@ -1,12 +1,13 @@
 import pytest
 
+from issue_tracker import app_settings
+from issue_tracker.channels.channels_factory import ChannelTransformer
+
 
 class TestChannelTransformer:
-    def test_get_channel_invalid_name(self, channel_transformer):
+    def test_get_channel_invalid_name(self):
         # Mock the channel instance
-        # Mock the channels dictionary
         with pytest.raises(ValueError) as exc:
-            channel_transformer.get_channel("INVALID")
-
+            ChannelTransformer().get_channel("INVALID")
         # Assert that the correct exception is raised
         assert str(exc.value) == "Invalid channel name: INVALID"
