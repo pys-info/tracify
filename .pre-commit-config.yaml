@@ -28,4 +28,4 @@ repos:
     rev: 5.0.4
     hooks:
       - id: flake8
-        args: [ '--config=pre_commit_config_setup.cfg' ]
+        args: [ '--config=flake8.cfg' ]
