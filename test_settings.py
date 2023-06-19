@@ -138,7 +138,7 @@ ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
     "DB": {
         "BACKEND": "issue_tracker.channels.backends.db.DBChannel",
     },
-    "SLACk": {
+    "SLACK": {
         "BACKEND": "issue_tracker.channels.backends.slack.SlackChannel",
         "WEBHOOK_URL": os.environ.get("SLACK_WEBHOOK_URL"),
     }
