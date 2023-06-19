@@ -45,10 +45,11 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
     "EMAIL": {
         "BACKEND": "issue_tracker.channels.backends.email.EmailChannel",
     },
+    # If you are using EMAIL in above configuration you must need to configure EMAIL Configuration with EMAIL_ADMIN_USER and EMAIL_HOST_USER in settings.py
     "DB": {
         "BACKEND": "issue_tracker.channels.backends.db.DBChannel",
     },
-    "SLACk": {
+    "SLACK": {
         "BACKEND": "issue_tracker.channels.backends.slack.SlackChannel",
         "WEBHOOK_URL": <"SLACK_WEBHOOK_URL">,
     }
@@ -59,6 +60,12 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
         ...
         # The following apps is required:
        issue_tracker,
+    ]
+
+    MIDDLEWARE = [
+        ...
+        # The following middleware is required:
+        'issue_tracker.middleware.ErrorNotificationMiddleware'
     ]
 ## Acknowledgements
  - We would like to express our gratitude to the following individuals and organizations for their contributions, support, and inspiration:

@@ -13,7 +13,7 @@ on:
 jobs:
   run_tests:
     runs-on: ubuntu-latest
-
+    environment: CI
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -29,6 +29,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run Tests
+        env:
+          EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+          EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+          EMAIL_ADMIN_USER: ${{ secrets.EMAIL_ADMIN_USER }}
         run: |
           pytest issue_tracker/tests/test_channels_factory.py
           pytest issue_tracker/tests/channels/
