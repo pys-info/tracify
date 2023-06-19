@@ -8,13 +8,16 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="pys-django-issue-tracker",
-    version="1.0.0",
+    version="1.0.2",
     author="Pysquad",
     author_email="vh@pysquad.com",
     description="Django Issue tracker",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/pys-info/pys-issue-tracker",
+    package_data={
+        'issue_tracker': ['templates/*'],
+    },
     install_requires=[line.strip() for line in open("requirements.txt")],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
@@ -42,9 +45,7 @@ setup(
     packages=find_packages(exclude=("example")),
     python_requires=">=3.5",
     project_urls={
-        "Bug Reports": "",
-        "Funding": "",
-        "Say Thanks!": "",
+        "Bug Reports": "https://github.com/pys-info/pys-issue-tracker/issues",
         "Source": "https://github.com/pys-info/pys-issue-tracker",
     },
 )
