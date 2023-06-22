@@ -27,7 +27,7 @@ Get instant notifications and detailed stack traces for errors occurring in your
 
 **Python package:**
 
-    pip install django-issue-tracker
+    pip install pys-django-issue-tracker
 
 settings.py (Please note that below settings is required as INSTALLED_APPS)::
 
