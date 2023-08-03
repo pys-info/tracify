@@ -87,4 +87,4 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
 *MIT License:* <https://choosealicense.com/licenses/mit/>
 
 ## Contact
-For any inquiries or feedback, you can reach us at xyz@example.com or join our community channel.
+For any inquiries or feedback, you can reach us at contact@pysquad.com or join our community channel from here https://discord.gg/d2yxwBCd.
