@@ -5,6 +5,7 @@ from issue_tracker.channels.channel import Channel
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from issue_tracker import app_settings
+from issue_tracker.utils import get_body_data
 
 
 class EmailChannel(Channel):
@@ -23,17 +24,18 @@ class EmailChannel(Channel):
             None
         """
         request = kwargs.get("request")
+        body = get_body_data(request)
         context = {
+            "exception_type": kwargs.get("exception_type"),
             "error_tracback": str(kwargs.get("data")),
             "user": request.user if request.user.is_authenticated else None,
             "method": request.method,
             "url": request.build_absolute_uri(),
             "get": json.dumps(request.GET) if request.GET else "DATA not found.",
-            "post": json.dumps(request.POST) if request.POST else "DATA not found.",
-            "files": json.dumps(request.FILES) if request.FILES else "DATA not found.",
+            "body": json.dumps(body) if body else "DATA not found.",
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
-        html_content = render_to_string(template_name="issue_notifire.html", context=context)
+        html_content = render_to_string(template_name="issue_notifier.html", context=context)
         msg = EmailMultiAlternatives(from_email=app_settings.EMAIL_ADMIN_USER, subject="ERROR LOG",
                                      to=[app_settings.EMAIL_HOST_USER])
         msg.attach_alternative(html_content, "text/html")

@@ -4,6 +4,7 @@ from discord_webhook import DiscordEmbed, DiscordWebhook
 from django.core.exceptions import ImproperlyConfigured
 
 from issue_tracker.channels.channel import Channel
+from issue_tracker.utils import get_body_data
 
 
 class DiscordChannel(Channel):
@@ -42,10 +43,7 @@ class DiscordChannel(Channel):
             name="GET", value=json.dumps(kwargs.get("request").GET), inline=False
         )
         embed.add_embed_field(
-            name="POST", value=json.dumps(kwargs.get("request").POST), inline=False
-        )
-        embed.add_embed_field(
-            name="File", value=json.dumps(kwargs.get("request").FILES), inline=False
+            name="BODY", value=json.dumps(get_body_data(kwargs.get("request"))), inline=False
         )
         embed.set_timestamp()
         webhook.add_embed(embed)
