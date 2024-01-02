@@ -30,3 +30,5 @@ timestamp==0.0.1
 tomli==2.0.1
 urllib3==2.0.2
 virtualenv==20.23.0
+djangorestframework==3.14.0
+requests-toolbelt==1.0.0

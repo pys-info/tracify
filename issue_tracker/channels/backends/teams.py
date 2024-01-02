@@ -5,6 +5,7 @@ import pymsteams
 from django.core.exceptions import ImproperlyConfigured
 
 from issue_tracker.channels.channel import Channel
+from issue_tracker.utils import get_body_data
 
 
 class TeamsChannel(Channel):
@@ -42,12 +43,13 @@ class TeamsChannel(Channel):
         request = kwargs.get("request")
 
         # Add facts to Section 2
+        body = get_body_data(request)
         facts = {
             "USER": request.user.username if request.user.username else "None",
             "METHOD": request.method if request.method else "Method not found.",
             "GET": json.dumps(request.GET) if request.GET else "DATA not found.",
-            "POST": json.dumps(request.POST) if request.POST else "DATA not found.",
-            "FILES": json.dumps(request.FILES) if request.FILES else "DATA not found.",
+            "BODY": json.dumps(body) if body else "DATA not found.",
+            # "FILES": json.dumps(request.FILES) if request.FILES else "DATA not found.",
             "TIMESTAMP": str(datetime.datetime.now()),
         }
         for key, value in facts.items():

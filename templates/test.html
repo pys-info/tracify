@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>HTML Forms</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="date">Data:</label><br>
+  <input type="datetime-local" id="date" name="date"><br><br>
+  <label for="file">Choose a files:</label><br>
+  <input type="file" id="file" name="file" multiple><br><br>
+  <label for="file1">Choose a file:</label><br>
+  <input type="file" id="file1" name="file1" ><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

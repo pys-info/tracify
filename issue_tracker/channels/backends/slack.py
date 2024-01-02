@@ -1,7 +1,11 @@
+import json
+
 from django.core.exceptions import ImproperlyConfigured
 
 from issue_tracker.channels.channel import Channel
 from slack_sdk.webhook import WebhookClient
+
+from issue_tracker.utils import get_body_data
 
 
 class SlackChannel(Channel):
@@ -26,17 +30,21 @@ class SlackChannel(Channel):
         if not _configuration.get("WEBHOOK_URL"):
             raise ImproperlyConfigured("Slack Webhook URL missing")
         webhook = WebhookClient(_configuration.get("WEBHOOK_URL"), )
-        data = f"```{kwargs.get('data')}```"
-        webhook.send(
-            text="fallback",
-            blocks=[
-                {
-                    "type": "section",
-                    "text": {
-                        "type": "mrkdwn",
-                        "text": data
-                    }
-                }
-            ]
-        )
 
+        message = {
+            'text': kwargs.get("request").build_absolute_uri(),
+            'attachments': [
+                {
+                    'title': kwargs.get("exception_type"),
+                    'text': f"```{kwargs.get('data')}```",
+                    'color': '#03b2f8',
+                    'fields': [
+                        {'title': 'Method', 'value': kwargs.get("request").method, 'short': True},
+                        {'title': 'GET', 'value': json.dumps(kwargs.get("request").GET), 'short': False},
+                        {'title': 'BODY', 'value': json.dumps(get_body_data(kwargs.get("request"))), 'short': False},
+                    ],
+                },
+            ],
+        }
+
+        webhook.send(**message)
