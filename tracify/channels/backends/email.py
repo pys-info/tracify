@@ -1,11 +1,11 @@
 import json
 from datetime import datetime
 
-from issue_tracker.channels.channel import Channel
+from tracify.channels.channel import Channel
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
-from issue_tracker import app_settings
-from issue_tracker.utils import get_body_data
+from tracify import app_settings
+from tracify.utils import get_body_data
 
 
 class EmailChannel(Channel):

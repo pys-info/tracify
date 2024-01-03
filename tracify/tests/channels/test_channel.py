@@ -1,6 +1,6 @@
 import pytest
 
-from issue_tracker.channels.channel import Channel
+from tracify.channels.channel import Channel
 
 
 class TestChannel:

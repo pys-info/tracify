@@ -7,18 +7,18 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
-    name="pys-django-issue-tracker",
+    name="tracify",
     version="1.0.2",
     author="Pysquad",
     author_email="vh@pysquad.com",
-    description="Django Issue tracker",
+    description="Django Tracify",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pys-info/pys-issue-tracker",
+    url="https://github.com/pys-info/tracify",
     package_data={
-        'issue_tracker': ['templates/*'],
+        'tracify': ['templates/*'],
     },
-    install_requires=[line.strip() for line in open("requirements.txt")],
+    install_requires=[line.strip() for line in open("requirements/base.txt")],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
@@ -45,7 +45,7 @@ setup(
     packages=find_packages(exclude=("example")),
     python_requires=">=3.5",
     project_urls={
-        "Bug Reports": "https://github.com/pys-info/pys-issue-tracker/issues",
-        "Source": "https://github.com/pys-info/pys-issue-tracker",
+        "Bug Reports": "https://github.com/pys-info/tracify/issues",
+        "Source": "https://github.com/pys-info/tracify",
     },
 )

@@ -4,7 +4,7 @@ import pytest
 from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpRequest
 
-from issue_tracker.channels.backends.discord import DiscordChannel
+from tracify.channels.backends.discord import DiscordChannel
 
 
 class TestDiscordChannel:
@@ -60,7 +60,7 @@ class TestDiscordChannel:
 
         # Patch the DiscordWebhook class and execute method
         with mock.patch(
-            "issue_tracker.channels.backends.discord.DiscordWebhook",
+            "tracify.channels.backends.discord.DiscordWebhook",
             return_value=webhook_mock,
         ):
             discord_channel.send_notification(**kwargs)

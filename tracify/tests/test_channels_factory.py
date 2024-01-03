@@ -1,7 +1,7 @@
 import pytest
 
-from issue_tracker import app_settings
-from issue_tracker.channels.channels_factory import ChannelTransformer
+from tracify import app_settings
+from tracify.channels.channels_factory import ChannelTransformer
 
 
 class TestChannelTransformer:

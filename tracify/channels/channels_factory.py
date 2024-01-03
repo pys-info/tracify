@@ -1,6 +1,6 @@
 import importlib
 
-from issue_tracker import app_settings
+from tracify import app_settings
 
 
 class ChannelTransformer:
@@ -22,9 +22,9 @@ class ChannelTransformer:
 
     def __init__(self):
         """
-        Configures the issue tracker channels based on the provided app settings.
+        Configures the tracify channels based on the provided app settings.
 
-        The method iterates over the `ISSUE_TRACKER_CHANNELS_CONFIGURATION` dictionary in the `app_settings` module,
+        The method iterates over the `TRACIFY_CHANNELS_CONFIGURATION` dictionary in the `app_settings` module,
         which contains the configuration for each channel. It dynamically imports the channel class, creates an instance
         of the class, and sets the credentials for the channel.
 
@@ -43,7 +43,7 @@ class ChannelTransformer:
         for (
             channel_name,
             channel_config,
-        ) in app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION.items():
+        ) in app_settings.TRACIFY_CHANNELS_CONFIGURATION.items():
 
             # Extract channel class and credentials from configuration
             channel_class_path = (

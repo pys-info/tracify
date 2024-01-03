@@ -1,6 +1,6 @@
 import sys
 import traceback
-from issue_tracker import app_settings
+from tracify import app_settings
 from django.core.exceptions import ImproperlyConfigured
 
 from .channels.channel import Channel
@@ -32,41 +32,41 @@ class ErrorNotificationMiddleware:
 
     def add_channel(self, name: str, channel: Channel):
         """
-        Adds an issue tracker channel to the list of channels used by the middleware.
+        Adds a tracify channel to the list of channels used by the middleware.
 
         Args:
-            name: The name of the issue tracker channel.
+            name: The name of the tracify channel.
             channel: The Channel instance to add.
         """
         self.channels[name] = channel
 
     def process_exception(self, request, exception):
         """
-        Process the exception and send notifications to the configured issue tracker channels.
+        Process the exception and send notifications to the configured tracify channels.
 
         Args:
             request: The request object.
             exception: The exception object.
 
         Raises:
-            ImproperlyConfigured: If the issue tracker channels configuration is missing.
+            ImproperlyConfigured: If the tracify channels configuration is missing.
         """
         exception_args = exception.args[0] if len(exception.args) > 0 else ""
         exception_type = exception.__class__.__name__
         kind, info, data = sys.exc_info()
         data = "\n".join(traceback.format_exception(kind, info, data))
 
-        if not app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION:
-            raise ImproperlyConfigured("issue tracker channels configuration missing")
+        if not app_settings.TRACIFY_CHANNELS_CONFIGURATION:
+            raise ImproperlyConfigured("tracify channels configuration missing")
 
-        for channel_name in app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION:
+        for channel_name in app_settings.TRACIFY_CHANNELS_CONFIGURATION:
             channel = self.channels.get(channel_name)
             if not channel:
                 # Create the channel object if not already created
                 channel = channel_transformer.get_channel(name=channel_name)
                 self.add_channel(channel_name, channel)
             channel.send_notification(
-                configuration=app_settings.ISSUE_TRACKER_CHANNELS_CONFIGURATION[channel_name],
+                configuration=app_settings.TRACIFY_CHANNELS_CONFIGURATION[channel_name],
                 request=request, exception_args=exception_args,
                 data=data, exception_type=exception_type
             )

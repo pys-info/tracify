@@ -2,10 +2,10 @@ import json
 
 from django.core.exceptions import ImproperlyConfigured
 
-from issue_tracker.channels.channel import Channel
+from tracify.channels.channel import Channel
 from slack_sdk.webhook import WebhookClient
 
-from issue_tracker.utils import get_body_data
+from tracify.utils import get_body_data
 
 
 class SlackChannel(Channel):

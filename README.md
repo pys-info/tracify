@@ -1,15 +1,15 @@
 
-<h1><i> django-issue-tracker</i></h1>
+<h1><i> tracify </i></h1>
 
 **[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)**
 <a href="http://www.djangoproject.com/"><img src="https://www.djangoproject.com/m/img/badges/djangomade124x25.gif" border="0" alt="Made with Django." title="Made with Django." /></a>
 
 ## Project description
-Django Issue Tracker is a robust package designed to streamline issue tracking within Django web applications.The package supports various notification channels, allowing teams to receive updates through their preferred communication methods.By integrating this package, teams can collaborate seamlessly, expedite issue resolution, and enhance overall efficiency throughout the software development and maintenance lifecycle in Django projects.
+Django Tracify is a robust package designed to streamline issue tracking within Django web applications.The package supports various notification channels, allowing teams to receive updates through their preferred communication methods.By integrating this package, teams can collaborate seamlessly, expedite issue resolution, and enhance overall efficiency throughout the software development and maintenance lifecycle in Django projects.
 ## Feature
 
 * **Multiple Notification Channels:**
-Django Issue Tracker supports multiple channels for sending notifications, such as email, MS Teams, Discord, or any other custom channels. This flexibility allows teams to choose the most effective means of receiving notifications based on their communication preferences and workflows.
+Django Tracify supports multiple channels for sending notifications, such as email, MS Teams, Discord, or any other custom channels. This flexibility allows teams to choose the most effective means of receiving notifications based on their communication preferences and workflows.
 * **Real-Time Error Monitoring:**
 Get instant notifications and detailed stack traces for errors occurring in your application, allowing you to respond quickly.
 
@@ -27,30 +27,30 @@ Get instant notifications and detailed stack traces for errors occurring in your
 
 **Python package:**
 
-    pip install pys-django-issue-tracker
+    pip install tracify
 
 settings.py (Please note that below settings is required as INSTALLED_APPS)::
 
     # Specify channels configuration as follows:
 
-    ISSUE_TRACKER_CHANNELS_CONFIGURATION = {
+    TRACIFY_CHANNELS_CONFIGURATION = {
     "DISCORD": {
-        "BACKEND": "issue_tracker.channels.backends.discord.DiscordChannel",
+        "BACKEND": "tracify.channels.backends.discord.DiscordChannel",
         "WEBHOOK_URL": <"DISCORD_WEBHOOK_URL">,
     },
     "TEAMS": {
-        "BACKEND": "issue_tracker.channels.backends.teams.TeamsChannel",
+        "BACKEND": "tracify.channels.backends.teams.TeamsChannel",
         "WEBHOOK_URL": <"TEAMS_WEBHOOK_URL">,
     },
     "EMAIL": {
-        "BACKEND": "issue_tracker.channels.backends.email.EmailChannel",
+        "BACKEND": "tracify.channels.backends.email.EmailChannel",
     },
     # If you are using EMAIL in above configuration you must need to configure EMAIL Configuration with EMAIL_ADMIN_USER and EMAIL_HOST_USER in settings.py
     "DB": {
-        "BACKEND": "issue_tracker.channels.backends.db.DBChannel",
+        "BACKEND": "tracify.channels.backends.db.DBChannel",
     },
     "SLACK": {
-        "BACKEND": "issue_tracker.channels.backends.slack.SlackChannel",
+        "BACKEND": "tracify.channels.backends.slack.SlackChannel",
         "WEBHOOK_URL": <"SLACK_WEBHOOK_URL">,
     }
     ...
@@ -59,13 +59,13 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
     INSTALLED_APPS = [
         ...
         # The following apps is required:
-       issue_tracker,
+       tracify,
     ]
 
     MIDDLEWARE = [
         ...
         # The following middleware is required:
-        'issue_tracker.middleware.ErrorNotificationMiddleware'
+        'tracify.middleware.ErrorNotificationMiddleware'
     ]
 ## Acknowledgements
  - We would like to express our gratitude to the following individuals and organizations for their contributions, support, and inspiration:
