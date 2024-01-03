@@ -4,7 +4,7 @@ from django.http import QueryDict
 from django.utils.datastructures import MultiValueDict
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
-from issue_tracker.utils import get_body_data
+from tracify.utils import get_body_data
 
 
 class GetBodyDataTestCase(TestCase):

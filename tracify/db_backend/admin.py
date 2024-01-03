@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from issue_tracker.db_backend.models import Issue
+from tracify.db_backend.models import Issue
 
 
 @admin.register(Issue)

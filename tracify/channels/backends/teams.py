@@ -4,8 +4,8 @@ import json
 import pymsteams
 from django.core.exceptions import ImproperlyConfigured
 
-from issue_tracker.channels.channel import Channel
-from issue_tracker.utils import get_body_data
+from tracify.channels.channel import Channel
+from tracify.utils import get_body_data
 
 
 class TeamsChannel(Channel):
@@ -59,5 +59,5 @@ class TeamsChannel(Channel):
         webhook.addSection(Section1)
         webhook.addSection(Section2)
 
-        webhook.summary("Issue Tracker")  # Set the summary of the card
+        webhook.summary("Tracify")  # Set the summary of the card
         webhook.send()  # Send the message via the webhook

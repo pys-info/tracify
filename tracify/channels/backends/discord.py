@@ -3,8 +3,8 @@ import json
 from discord_webhook import DiscordEmbed, DiscordWebhook
 from django.core.exceptions import ImproperlyConfigured
 
-from issue_tracker.channels.channel import Channel
-from issue_tracker.utils import get_body_data
+from tracify.channels.channel import Channel
+from tracify.utils import get_body_data
 
 
 class DiscordChannel(Channel):
@@ -29,7 +29,7 @@ class DiscordChannel(Channel):
         webhook = DiscordWebhook(
             url=_configuration.get("WEBHOOK_URL"),
             content=kwargs.get("request").build_absolute_uri(),
-            username="Issue Tracker",
+            username="Tracify",
         )
         data = f"```{kwargs.get('data')}```"
         embed = DiscordEmbed(

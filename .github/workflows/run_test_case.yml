@@ -34,5 +34,5 @@ jobs:
           EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
           EMAIL_ADMIN_USER: ${{ secrets.EMAIL_ADMIN_USER }}
         run: |
-          pytest issue_tracker/tests/test_channels_factory.py
-          pytest issue_tracker/tests/channels/
+          pytest tracify/tests/test_channels_factory.py
+          pytest tracify/tests/channels/

@@ -1,12 +1,12 @@
 import pytest
 
-from issue_tracker.channels.backends.discord import DiscordChannel
-from issue_tracker.channels.channels_factory import ChannelTransformer
-from issue_tracker.middleware import ErrorNotificationMiddleware
+from tracify.channels.backends.discord import DiscordChannel
+from tracify.channels.channels_factory import ChannelTransformer
+from tracify.middleware import ErrorNotificationMiddleware
 
 
 @pytest.fixture
-def issue_tracker_channels_configuration():
+def tracify_channels_configuration():
     # Define the configuration dictionary
     configuration = {
         "CHANNEL_ONE": {
