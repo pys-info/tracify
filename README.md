@@ -23,7 +23,7 @@ Get instant notifications and detailed stack traces for errors occurring in your
 - Database
 - Slack
 
-## Installation 
+## Installation
 
 **Python package:**
 

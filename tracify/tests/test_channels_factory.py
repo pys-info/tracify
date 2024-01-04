@@ -1,6 +1,5 @@
 import pytest
 
-from tracify import app_settings
 from tracify.channels.channels_factory import ChannelTransformer
 
 

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "demo",
     "tracify",
-    "tracify.db_backend"
+    "tracify.db_backend",
 ]
 
 MIDDLEWARE = [
@@ -50,7 +50,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "tracify.middleware.ErrorNotificationMiddleware"
+    "tracify.middleware.ErrorNotificationMiddleware",
 ]
 
 ROOT_URLCONF = "example.urls"
@@ -125,12 +125,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 TRACIFY_CHANNELS_CONFIGURATION = {
     "DISCORD": {
         "BACKEND": "tracify.channels.backends.discord.DiscordChannel",
-        "WEBHOOK_URL": "ADD DISCORD WEBHOOK HERE"
+        "WEBHOOK_URL": "ADD DISCORD WEBHOOK HERE",
     },
     "DB": {
         "BACKEND": "tracify.channels.backends.db.DBChannel",
     },
     "EMAIL": {
         "BACKEND": "tracify.channels.backends.email.EmailChannel",
-    }
+    },
 }

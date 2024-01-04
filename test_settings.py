@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "tracify",
     "tracify.db_backend",
-    "rest_framework"
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
@@ -63,7 +63,7 @@ ROOT_URLCONF = "test_urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['templates'],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -143,7 +143,7 @@ TRACIFY_CHANNELS_CONFIGURATION = {
     "SLACK": {
         "BACKEND": "tracify.channels.backends.slack.SlackChannel",
         "WEBHOOK_URL": os.environ.get("SLACK_WEBHOOK_URL"),
-    }
+    },
 }
 
 # EMAIL SETTINGS

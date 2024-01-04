@@ -1,11 +1,10 @@
 import json
+import logging
 
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 
 from tracify.channels.channel import Channel
-import logging
-
 from tracify.db_backend.models import Issue
 from tracify.utils import get_body_data
 
@@ -27,7 +26,7 @@ class DBChannel(Channel):
                 - exception_type (str): The type of the exception.
         """
 
-        if 'tracify.db_backend' not in settings.INSTALLED_APPS:
+        if "tracify.db_backend" not in settings.INSTALLED_APPS:
             raise ImproperlyConfigured("Missing tracify.db_backend in INSTALLED_APPS")
 
         self.create_issue(**kwargs)
@@ -45,14 +44,14 @@ class DBChannel(Channel):
                 - exception_type (str): The type of the exception.
         """
         try:
-            body = get_body_data(kwargs.get('request'))
+            body = get_body_data(kwargs.get("request"))
             additional_data = {
-                "response": kwargs.get('data'),
-                "method": kwargs.get('request').method,
-                "headers": dict(kwargs.get('request').headers),
+                "response": kwargs.get("data"),
+                "method": kwargs.get("request").method,
+                "headers": dict(kwargs.get("request").headers),
                 "body": body,
-                "get": json.dumps(kwargs.get('request').GET),
-                "url": kwargs.get('request').build_absolute_uri()
+                "get": json.dumps(kwargs.get("request").GET),
+                "url": kwargs.get("request").build_absolute_uri(),
             }
 
             Issue.objects.create(
