@@ -46,9 +46,7 @@ class ChannelTransformer:
         ) in app_settings.TRACIFY_CHANNELS_CONFIGURATION.items():
 
             # Extract channel class and credentials from configuration
-            channel_class_path = (
-                channel_config.get("BACKEND"),
-            )
+            channel_class_path = (channel_config.get("BACKEND"),)
 
             # Dynamically import the channel class
             module_name, class_name = channel_class_path[0].rsplit(".", 1)

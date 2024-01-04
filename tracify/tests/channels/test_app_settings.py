@@ -11,17 +11,13 @@ class TestTracifyChannelsConfiguration:
         """
         app_settings.TRACIFY_CHANNELS_CONFIGURATION = {}
         with pytest.raises(ImproperlyConfigured):
-            raise ImproperlyConfigured(
-                "TRACIFY_CHANNELS_CONFIGURATION is missing"
-            )
+            raise ImproperlyConfigured("TRACIFY_CHANNELS_CONFIGURATION is missing")
 
     def test_valid_configuration(self, tracify_channels_configuration):
         """
         Test case to verify the validity of the configuration when it is present and valid.
         """
-        app_settings.TRACIFY_CHANNELS_CONFIGURATION = (
-            tracify_channels_configuration
-        )
+        app_settings.TRACIFY_CHANNELS_CONFIGURATION = tracify_channels_configuration
         assert (
             app_settings.TRACIFY_CHANNELS_CONFIGURATION["CHANNEL_ONE"]["WEBHOOK_URL"]
             == "fake channel one webhook url"
@@ -37,6 +33,4 @@ class TestTracifyChannelsConfiguration:
         """
         app_settings.TRACIFY_CHANNELS_CONFIGURATION = "invalid_configuration"
         with pytest.raises(ImproperlyConfigured):
-            raise ImproperlyConfigured(
-                "TRACIFY_CHANNELS_CONFIGURATION is invalid"
-            )
+            raise ImproperlyConfigured("TRACIFY_CHANNELS_CONFIGURATION is invalid")

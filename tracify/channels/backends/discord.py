@@ -43,7 +43,9 @@ class DiscordChannel(Channel):
             name="GET", value=json.dumps(kwargs.get("request").GET), inline=False
         )
         embed.add_embed_field(
-            name="BODY", value=json.dumps(get_body_data(kwargs.get("request"))), inline=False
+            name="BODY",
+            value=json.dumps(get_body_data(kwargs.get("request"))),
+            inline=False,
         )
         embed.set_timestamp()
         webhook.add_embed(embed)

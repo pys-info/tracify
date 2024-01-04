@@ -14,20 +14,19 @@ class TemplateViewTest(TemplateView):
     template_name = "test.html"
 
     def post(self, request):
-        a = 1/0
+        a = 1 / 0
         return HttpResponse("test")
 
 
 class APITest(APIView):
-
     def get(self, request, pk):
-        a = 1/0
+        a = 1 / 0
         return Response({"test": "test"})
 
     def post(self, request, pk):
-        a = 1/0
+        a = 1 / 0
         return Response({"test": "test"})
 
     def put(self, request, pk):
-        a = 1/0
+        a = 1 / 0
         return Response({"test": "test"})

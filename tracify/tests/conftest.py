@@ -11,7 +11,7 @@ def tracify_channels_configuration():
     configuration = {
         "CHANNEL_ONE": {
             "BACKEND": "fake channel class path",
-            "WEBHOOK_URL": "fake channel one webhook url"
+            "WEBHOOK_URL": "fake channel one webhook url",
         },
         "CHANNEL_TWO": {
             "BACKEND": "fake channel class path",

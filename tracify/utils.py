@@ -1,7 +1,8 @@
-from urllib.parse import parse_qs
-from django.http.multipartparser import MultiPartParser
-from io import BytesIO
 import json
+from io import BytesIO
+from urllib.parse import parse_qs
+
+from django.http.multipartparser import MultiPartParser
 
 
 def prepare_file_list(file_dict, body):
@@ -38,7 +39,12 @@ def get_body_data(request):
             prepare_file_list(request.FILES, body)
             return body
         else:
-            parser = MultiPartParser(request.META, BytesIO(request.body), request.upload_handlers, request.encoding)
+            parser = MultiPartParser(
+                request.META,
+                BytesIO(request.body),
+                request.upload_handlers,
+                request.encoding,
+            )
             query_dict, multi_value_dict = parser.parse()
 
             body.update(query_dict.dict())

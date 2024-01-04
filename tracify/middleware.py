@@ -1,7 +1,9 @@
 import sys
 import traceback
-from tracify import app_settings
+
 from django.core.exceptions import ImproperlyConfigured
+
+from tracify import app_settings
 
 from .channels.channel import Channel
 from .channels.channels_factory import channel_transformer
@@ -67,6 +69,8 @@ class ErrorNotificationMiddleware:
                 self.add_channel(channel_name, channel)
             channel.send_notification(
                 configuration=app_settings.TRACIFY_CHANNELS_CONFIGURATION[channel_name],
-                request=request, exception_args=exception_args,
-                data=data, exception_type=exception_type
+                request=request,
+                exception_args=exception_args,
+                data=data,
+                exception_type=exception_type,
             )

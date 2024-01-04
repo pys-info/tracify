@@ -16,7 +16,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/pys-info/tracify",
     package_data={
-        'tracify': ['templates/*'],
+        "tracify": ["templates/*"],
     },
     install_requires=[line.strip() for line in open("requirements/base.txt")],
     classifiers=[
