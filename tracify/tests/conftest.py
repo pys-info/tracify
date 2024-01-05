@@ -2,7 +2,6 @@ import pytest
 
 from tracify.channels.backends.discord import DiscordChannel
 from tracify.channels.channels_factory import ChannelTransformer
-from tracify.middleware import ErrorNotificationMiddleware
 
 
 @pytest.fixture
@@ -19,12 +18,6 @@ def tracify_channels_configuration():
         },
     }
     return configuration
-
-
-@pytest.fixture
-def error_notification_middleware():
-    # Instance of ErrorNotificationMiddleware for testing
-    return ErrorNotificationMiddleware()
 
 
 @pytest.fixture
