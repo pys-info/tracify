@@ -1,3 +1,5 @@
+import os
+
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.http import QueryDict
 from django.test import RequestFactory, TestCase
@@ -8,6 +10,10 @@ from tracify.utils import get_body_data
 
 
 class GetBodyDataTestCase(TestCase):
+    def setUp(self):
+        self.current_directory = os.path.dirname(os.path.abspath(__file__))
+        self.sample_image_path = os.path.join(self.current_directory, "sample.jpg")
+        
     def test_form_urlencoded_content_type(self):
         request = RequestFactory()
         request = request.post(
@@ -32,7 +38,7 @@ class GetBodyDataTestCase(TestCase):
         request.POST = query_dict
 
         file_1 = InMemoryUploadedFile(
-            file=open("sample.jpg", "rb"),
+            file=open(self.sample_image_path, "rb"),
             field_name="file",
             name="sample.jpg",
             content_type="image/png",
@@ -41,7 +47,7 @@ class GetBodyDataTestCase(TestCase):
         )
 
         file_2 = InMemoryUploadedFile(
-            file=open("sample.jpg", "rb"),
+            file=open(self.sample_image_path, "rb"),
             field_name="file1",
             name="sample.jpg",
             content_type="image/png",
@@ -63,7 +69,7 @@ class GetBodyDataTestCase(TestCase):
         self.assertEqual(result, expected_result)
 
     def test_multipart_form_data_content_type_else_part(self):
-        with open("sample.jpg", "rb") as file:
+        with open(self.sample_image_path, "rb") as file:
             file_data = file.read()
 
         dynamic_data = {
