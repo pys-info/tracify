@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "tracify",
     "tracify.db_backend",
-    "rest_framework",
 ]
 
 MIDDLEWARE = [

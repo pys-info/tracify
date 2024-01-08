@@ -14,8 +14,8 @@ Django Tracify supports multiple channels for sending notifications, such as ema
 Get instant notifications and detailed stack traces for errors occurring in your application, allowing you to respond quickly.
 
 ## Requirements
-- Python 3.5, 3.6, 3.7, 3.8, 3.9, or 3.10
-- Django (3.0+)
+- Python >=3.8
+- Django >=3.1
 ## Supported Channels
 - Discord
 - MS Teams
@@ -49,6 +49,7 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
     "DB": {
         "BACKEND": "tracify.channels.backends.db.DBChannel",
     },
+    # If you are using DB in above configuration you must need to add tracify.db_backend in INSTALLED_APP
     "SLACK": {
         "BACKEND": "tracify.channels.backends.slack.SlackChannel",
         "WEBHOOK_URL": <"SLACK_WEBHOOK_URL">,
