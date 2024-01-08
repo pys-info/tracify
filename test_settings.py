@@ -54,8 +54,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # EXCEPTION HANDLER MIDDLEWARE
-    "tracify.middleware.ErrorNotificationMiddleware",
 ]
 
 ROOT_URLCONF = "test_urls"

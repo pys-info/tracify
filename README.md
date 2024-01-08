@@ -62,11 +62,6 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
        tracify,
     ]
 
-    MIDDLEWARE = [
-        ...
-        # The following middleware is required:
-        'tracify.middleware.ErrorNotificationMiddleware'
-    ]
 ## Acknowledgements
  - We would like to express our gratitude to the following individuals and organizations for their contributions, support, and inspiration:
    - PySquad Informatics LLP(https://pysquad.com/)
