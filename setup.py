@@ -1,3 +1,4 @@
+import os
 import pathlib
 
 from setuptools import find_packages, setup
@@ -8,7 +9,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="tracify",
-    version="1.0.2",
+    version="1.0.0",
     author="Pysquad",
     author_email="vh@pysquad.com",
     description="Django Tracify",
@@ -18,7 +19,7 @@ setup(
     package_data={
         "tracify": ["templates/*"],
     },
-    install_requires=[line.strip() for line in open("requirements/base.txt")],
+    install_requires=[line.strip() for line in open(os.path.join(here, "requirements/base.txt"))],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
@@ -26,15 +27,11 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Environment :: Web Environment",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3 :: Only",
         "Framework :: Django",
-        "Framework :: Django :: 3.0",
         "Framework :: Django :: 3.1",
         "Framework :: Django :: 3.2",
         "Framework :: Django :: 4.0",
