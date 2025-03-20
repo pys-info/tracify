@@ -37,7 +37,13 @@ class TracifyConfigurationValidator:
                     if not scheme or not host:
                         raise ValueError(f"Invalid URL for {channel} webhook.")
                 else:
-                    raise ImproperlyConfigured(f"WEBHOOK of {channel} is missing in TRACIFY_CHANNELS_CONFIGURATION")
+                    red_color = "\033[91m"  # ANSI escape code for red text
+                    reset_color = "\033[0m"  # Reset to default color
+                    warnings.warn(
+                        f"{red_color}⚠️  WARNING: The webhook URL for channel '{channel}' is missing in TRACIFY_CHANNELS_CONFIGURATION.{reset_color}",
+                        UserWarning
+                    )
+                    # raise ImproperlyConfigured(f"WEBHOOK of {channel} is missing in TRACIFY_CHANNELS_CONFIGURATION")
 
     def validate_database(self):
         if "DB" in self.channels_configuration and "tracify.db_backend" not in settings.INSTALLED_APPS:
