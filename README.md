@@ -30,6 +30,11 @@ Get instant notifications and detailed stack traces for errors occurring in your
     pip install tracify
 
 settings.py (Please note that below settings is required as INSTALLED_APPS)::
+    INSTALLED_APPS = [
+        ...
+        # The following apps is required:
+       "tracify",
+    ]
 
     # Specify channels configuration as follows:
 
@@ -57,11 +62,7 @@ settings.py (Please note that below settings is required as INSTALLED_APPS)::
     ...
 }
 
-    INSTALLED_APPS = [
-        ...
-        # The following apps is required:
-       tracify,
-    ]
+    
 
 ## Acknowledgements
  - We would like to express our gratitude to the following individuals and organizations for their contributions, support, and inspiration:
