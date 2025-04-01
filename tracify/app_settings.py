@@ -1,3 +1,5 @@
+import warnings
+
 from requests.exceptions import InvalidURL
 from urllib3.exceptions import LocationParseError
 from urllib3.util import parse_url
